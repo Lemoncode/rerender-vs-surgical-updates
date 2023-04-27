@@ -1,0 +1,28 @@
+.root {
+  user-select: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-dark);
+  filter: brightness(0.9);
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.root input[type="checkbox"] {
+  display: none;
+}
+
+.root label {
+  cursor: pointer;
+  min-width: 200px;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  text-transform: capitalize;
+  color: white;
+}
+.root label > :last-child {
+  margin-left: auto;
+}

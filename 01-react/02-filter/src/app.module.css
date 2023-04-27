@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--primary-main);
+  border-radius: 10px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

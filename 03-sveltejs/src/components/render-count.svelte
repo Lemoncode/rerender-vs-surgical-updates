@@ -1,0 +1,43 @@
+<script lang="ts">
+  let count = 0;
+
+  count = count + 1;
+  const getClassName = () =>
+    count >= 10 ? (count > 25 ? "error" : "warning") : "success";
+</script>
+
+<span class={`root ${getClassName()}`}>
+  {count}
+</span>
+
+<style>
+  .root {
+    color: white;
+    padding: 4px 6px 5px 6px;
+    font-weight: bold;
+    font-size: 0.75rem;
+    min-width: 20px;
+    border-radius: 5px;
+    min-width: 10px;
+    display: flex;
+    justify-content: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #016d92;
+  }
+
+  .error {
+    background-color: #d32f2f;
+    color: white;
+  }
+
+  .warning {
+    background-color: #ed6c02;
+    color: black;
+  }
+
+  .success {
+    background-color: #2e7d32;
+    color: white;
+  }
+</style>

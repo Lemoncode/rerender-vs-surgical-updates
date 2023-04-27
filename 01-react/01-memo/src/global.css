@@ -1,0 +1,99 @@
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 200, "opsz" 24;
+}
+
+.material-symbols-outlined.fill {
+  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 200, "opsz" 24;
+}
+
+:root {
+  --primary-main-h: 195;
+  --primary-main-s: 99%;
+  --primary-main-l: 29%;
+  --primary-main: hsl(
+    var(--primary-main-h),
+    var(--primary-main-s),
+    var(--primary-main-l)
+  );
+  --primary-dark: hsl(
+    var(--primary-main-h),
+    var(--primary-main-s),
+    calc(var(--primary-main-l) * 0.86)
+  );
+  --primary-darken: hsl(
+    var(--primary-main-h),
+    var(--primary-main-s),
+    calc(var(--primary-main-l) * 0.56)
+  );
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body,
+ul,
+div,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#filtered-count {
+  display: none;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin: 0.5rem 1rem;
+}
+
+#count {
+  color: white;
+  padding: 4px 6px 5px 6px;
+  font-weight: bold;
+  font-size: 0.75rem;
+  min-width: 20px;
+  border-radius: 5px;
+  min-width: 10px;
+  display: flex;
+  justify-content: center;
+  background-color: #d32f2f;
+}
+
+ul {
+  list-style: none;
+}
+
+.star {
+  color: #c8dce2;
+  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" -25, "opsz" 24;
+}
+
+.star.fill {
+  font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 200, "opsz" 24;
+}
+
+input {
+  margin-left: calc(1rem - 0.3rem);
+  color: white;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+input::placeholder {
+  color: white;
+}
+
+button {
+  color: white;
+  background-color: var(--primary-main);
+  border: none;
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
