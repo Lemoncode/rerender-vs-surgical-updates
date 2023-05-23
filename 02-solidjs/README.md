@@ -1,8 +1,8 @@
 # Solidjs
 
-In this example we have implemented the same as the previous one but using Solidjs.
+Let's see how can we implement the previous example using `SolidJS`.
 
-We still use `JSX` but instead of having a React state with the products we use signals. In this case, we don't need to wrap the `handleChange` function with `useCallback` nor the `filtered` with `useMemo` because these functions will be created only once (even if we update the properties of that product).
+One advantage for `React` developers is that `SolidJS` makes use of `JSX`, then following this example we will just replace `useState` with `signal` and by doing that we don't need to use `useCallback` and `useMemo` for this case, why? Because the component is only rendered once thus the functions will be created only once.
 
 _./src/app.tsx_
 
@@ -17,7 +17,7 @@ const ProductList = (props) => {
 
 ```
 
-Since `JSX` wraps the `createEffect` function, the filtered products will be updated when the `products` signal or visibility prop changes but not in color updates.
+Do you remember when we saw that `Solid JSX` already wrapped the `createEffect` function? Then, we don't need to do anything special, the filtered products will be updated when the products signal or visibility prop changes and wont' be called in color updates.
 
 _./src/app.tsx_
 

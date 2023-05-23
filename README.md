@@ -1,10 +1,15 @@
 # Overview
 
-In this example we have implemented using React, Solidjs and Svelte a demo similar to the one they did in the 2021 React Conf presenting React Forget.
+Back in 2021 the React core team presented a TODO like example app to show how React Forget works, we have mimic this example and implemented it in `React` / `SolidJS` and `Svelte`
 
 ## React
 
-Here we have a list of products where we can add a new one or update it by marking it as fav or unfav. Notice that all products are re-rendered even if we don't update their properties. 
+Let's display a list of products and let the users:
+
+- Add new ones.
+- Update them by marking them as fav or unfav.
+
+Since we are not implementing opitmizations, all products are re-rendered even if we don't update their properties.
 
 The React recommendation here is create a memoized `Product` component using `React.memo` that will only render when the properties change. We cannot forget the `useCallback` on the handle change function:
 
@@ -91,7 +96,7 @@ export const App = () => {
 
 ```
 
-The above fix still works but we are calling the `getFiltered` function even if we only changes the color.
+The above fix still works but we are calling the `getFiltered` function even if we only change the theme color.
 
 In most applications this may not be a problem, but if we need a good user experience on devices with fewer resources, for example on mobile device, we may want to avoid unnecessary calculations.
 
@@ -119,13 +124,13 @@ const ProductList = ({ visibility }) => {
 
 ```
 
-Depending on the device it may go faster or slower, but we have improved somewhat.
+Depending on the device it may go faster or slower, but we have improved this somewhat.
 
 ## SolidJS
 
-In this example we have implemented the same as the previous one but using SolidJS.
+Let's see how can we implement the previous example using `SolidJS`.
 
-We still use `JSX` but instead of having a React state with the products we use signals. In this case, we don't need to wrap the `handleChange` function with `useCallback` nor the `filtered` with `useMemo` because these functions will be created only once (even if we update the properties of that product).
+One advantage for `React` developers is that `SolidJS` makes use of `JSX`, then following this example we will just replace `useState` with `signal` and by doing that we don't need to use `useCallback` and `useMemo` for this case, why? Because the component is only rendered once thus the functions will be created only once.
 
 _./src/app.tsx_
 
@@ -140,7 +145,7 @@ const ProductList = (props) => {
 
 ```
 
-Since `JSX` wraps the `createEffect` function, the filtered products will be updated when the `products` signal or visibility prop changes but not in color updates.
+Do you remember when we saw that `Solid JSX` already wrapped the `createEffect` function? Then, we don't need to do anything special, the filtered products will be updated when the products signal or visibility prop changes and wont' be called in color updates.
 
 _./src/app.tsx_
 
@@ -169,13 +174,15 @@ const ProductList = (props) => {
 
 ## Svelte
 
+Let's check the `Svelte` implementation of this example
+
 In this case, components are written into `.svelte` files using a superset of HTML. In the `script` tag, we can write JavaScript/TypeScript code and define the `products` in a JavaScript variable using `let`.
 
-We will change the array reference when we add a new product or change the product status and using the `$` trick we will tell the compiler that the `filtered` variable will be recalculated when the `products` or `visibility` change.
+So when we manipulate the array an update will be triggered, and to apply changes when the filter gets updated, we need to use a magic entry `$` this is similar to the `createEffect` in `React` (it will be triggered when any of the inner props used in that code changes).
 
 ```js
 ...
- let products = INITIAL_PRODUCTS;
+  let products = INITIAL_PRODUCTS;
   const handleAdd = (event: CustomEvent<{ product: models.Product }>) => {
     products = [...products, event.detail.product];
   };
