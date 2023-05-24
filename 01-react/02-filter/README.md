@@ -1,6 +1,6 @@
 # 02 Filter
 
-In this example we are going to add a `FancyFilter` component and see whats happend with the re-renders.
+In this example we are going to add a `FancyFilter` component and see whats happened with the re-renders.
 
 We will take a startup point sample _01-memo_.
 
